@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Changelog — ArchTabs</title>
+<meta name="description" content="ArchTabs release notes — what changed in each version of the extension.">
+<link rel="canonical" href="https://nazargulov.github.io/en/archtabs/changelog.html">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<style>
+  :root {
+    --bg: #f7f5f1;
+    --card: #ffffff;
+    --text: #1a1c20;
+    --muted: #6b7280;
+    --border: #e8e4dc;
+    --accent: #4f46e5;
+    --added: #047857;
+    --changed: #b45309;
+    --fixed: #1d4ed8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.7;
+    color: var(--text);
+    background: var(--bg);
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 56px 24px 80px; }
+  header { text-align: center; margin-bottom: 40px; }
+  h1 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .lead { color: var(--muted); font-size: 0.95rem; }
+
+  .release {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin-bottom: 18px;
+  }
+  .release-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .version { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.01em; }
+  .date { color: var(--muted); font-size: 0.85rem; }
+
+  h3 {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 18px 0 8px;
+  }
+  h3:first-of-type { margin-top: 0; }
+  h3.added { color: var(--added); }
+  h3.changed { color: var(--changed); }
+  h3.fixed { color: var(--fixed); }
+
+  ul { padding-left: 22px; margin-bottom: 4px; }
+  li { margin-bottom: 6px; font-size: 0.95rem; }
+  code { background: #f1f1ee; padding: 2px 6px; border-radius: 4px; font-size: 0.86em; font-family: ui-monospace, "SF Mono", monospace; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  footer {
+    margin-top: 48px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  footer a { color: var(--muted); margin: 0 10px; }
+  footer a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Changelog</h1>
+    <p class="lead">Release notes for ArchTabs.</p>
+  </header>
+
+  <article class="release">
+    <div class="release-head">
+      <span class="version">0.3.0</span>
+      <span class="date">2026-04-26</span>
+    </div>
+
+    <h3 class="added">Added</h3>
+    <ul>
+      <li>AI bookmark tools: <code>find_bookmarks</code>, <code>move_bookmarks_to_folder</code>, <code>rename_bookmark_folder</code>. Lazy permission grant.</li>
+      <li>AI tab tools: <code>close_tabs</code>, <code>move_tabs_to_space</code>, <code>move_tabs_to_window</code>.</li>
+      <li>Featured "Reorganize tabs" prompt — appears once after AI is configured, decays after 7 days.</li>
+      <li>Native Anthropic Claude provider (direct <code>sk-ant-…</code> keys, <code>/v1/messages</code> endpoint with browser-access header).</li>
+      <li>Footer: "Rate ★" link next to "Feedback", dynamic Web Store URL via <code>chrome.runtime.id</code>.</li>
+      <li>429 rate-limit handling in AI error UI — points users to a different model on free tiers.</li>
+    </ul>
+
+    <h3 class="changed">Changed</h3>
+    <ul>
+      <li><code>host_permissions</code> declared for OpenAI, Anthropic, Groq, OpenRouter, DeepSeek, Google Analytics, plus localhost (Ollama).</li>
+      <li>AI request timeout raised from 90s to 180s for heavy first-time reorganize calls.</li>
+      <li>Ollama (and other no-key providers): API key field disabled with "Not required" hint; <code>Authorization</code> header skipped when key is empty.</li>
+      <li>CWS screenshot pipeline: real favicons via <code>s2/favicons</code>, themed sources at 390×800, sidepanel column widened in browser mockups.</li>
+      <li>Compact-mode CWS screenshot reduced from three densities to two (Cosy + Compact) for legibility.</li>
+    </ul>
+
+    <h3 class="fixed">Fixed</h3>
+    <ul>
+      <li>GA4 Measurement Protocol no longer blocked by CORS in service worker.</li>
+      <li>AI launch button no longer routes to settings on Ollama setups (was requiring an API key for all providers).</li>
+    </ul>
+  </article>
+
+  <footer>
+    <a href="index.html">Home</a> ·
+    <a href="privacy.html">Privacy</a> ·
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeyCLuvzAj7tdj3EzK7p1M9_2r-CgDVAGgoKb7yS5XZ4CY8Hw/viewform" target="_blank" rel="noopener">Feedback</a>
+    <p style="margin-top: 14px;">Built by Ilshat Nazargulov.</p>
+  </footer>
+
+</div>
+</body>
+</html>
