@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ArchTabs — Vertical Tabs in Chrome's Side Panel</title>
+<meta name="description" content="Vertical tabs for Chrome's side panel — without the wasted width. Compact mode, Spaces, snapshots, command bar, optional local AI.">
+<link rel="canonical" href="https://nazargulov.github.io/en/archtabs/">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<meta property="og:title" content="ArchTabs — Vertical Tabs in Chrome's Side Panel">
+<meta property="og:description" content="Vertical tabs that don't eat half your screen. Compact mode, Spaces, snapshots, command bar, optional local AI.">
+<meta property="og:url" content="https://nazargulov.github.io/en/archtabs/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+
+<style>
+  :root {
+    --bg: #f7f5f1;
+    --card: #ffffff;
+    --text: #1a1c20;
+    --muted: #6b7280;
+    --border: #e8e4dc;
+    --accent: #4f46e5;
+    --accent-2: #a855f7;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--bg);
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 56px 24px 80px; }
+  header.hero { text-align: center; margin-bottom: 48px; }
+  .logo {
+    width: 72px; height: 72px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 24px rgba(79, 70, 229, 0.25);
+  }
+  .logo img { width: 56px; height: 56px; }
+  h1 {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+  .tagline { color: var(--muted); font-size: 1.05rem; max-width: 560px; margin: 0 auto 24px; }
+  .cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: white;
+    padding: 12px 22px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .cta:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(79, 70, 229, 0.3); }
+  .cta-secondary {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-left: 16px;
+  }
+  .cta-secondary:hover { color: var(--text); }
+
+  section { margin-top: 48px; }
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 20px;
+  }
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+  }
+  .feature {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+  }
+  .feature h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; }
+  .feature p { color: var(--muted); font-size: 0.9rem; }
+
+  .honest {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 18px 22px;
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+  .honest strong { color: var(--text); }
+
+  footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  footer a { color: var(--muted); text-decoration: none; margin: 0 10px; }
+  footer a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="logo"><img src="favicon.svg" alt=""></div>
+    <h1>ArchTabs</h1>
+    <p class="tagline">Vertical tabs for Chrome's side panel — without the wasted width. Compact mode, Spaces, snapshots, command bar, optional local AI.</p>
+    <div>
+      <a class="cta" href="https://chromewebstore.google.com/" target="_blank" rel="noopener">Install for Chrome</a>
+      <a class="cta-secondary" href="https://docs.google.com/forms/d/e/1FAIpQLSeyCLuvzAj7tdj3EzK7p1M9_2r-CgDVAGgoKb7yS5XZ4CY8Hw/viewform" target="_blank" rel="noopener">Send feedback →</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>What you get</h2>
+    <div class="features">
+      <div class="feature">
+        <h3>Vertical tabs in the side panel</h3>
+        <p>Readable titles and favicons. Switch, close, pin, drag to reorder.</p>
+      </div>
+      <div class="feature">
+        <h3>Compact &amp; icon-only modes</h3>
+        <p>Three density modes. The direct answer to "vertical tabs waste my width".</p>
+      </div>
+      <div class="feature">
+        <h3>Spaces</h3>
+        <p>Split tabs into Work, Personal, Research. Switch from sidebar or keyboard.</p>
+      </div>
+      <div class="feature">
+        <h3>Command bar</h3>
+        <p>Cmd/Ctrl+K. Fuzzy search tabs, with optional @bookmark/@history/@recent scopes.</p>
+      </div>
+      <div class="feature">
+        <h3>Snapshots</h3>
+        <p>Save the current window state, restore later. No more "I lost all my tabs".</p>
+      </div>
+      <div class="feature">
+        <h3>Optional Connect AI</h3>
+        <p>Bring your own OpenAI-compatible key for tab-management commands. Off by default.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Honest about what Chrome lets us do</h2>
+    <p class="honest">
+      ArchTabs lives in Chrome's native side panel. <strong>Chrome's top tab bar stays</strong> — extensions cannot hide it. Chrome also controls the minimum side-panel width, so we cannot make the panel narrower than Chrome allows. Compact and icon-only modes are how we fit more tabs into the width Chrome gives us.
+    </p>
+  </section>
+
+  <section>
+    <h2>Privacy</h2>
+    <p style="color: var(--muted); font-size: 0.92rem;">
+      No host permissions. No content scripts. No account. Spaces, snapshots, and settings stay on your device. Anonymous usage events (install, feature used) are sent to Google Analytics — no tab URLs, no titles, no page contents. Read the full <a href="privacy.html" style="color: var(--accent);">privacy policy</a>.
+    </p>
+  </section>
+
+  <footer>
+    <a href="privacy.html">Privacy</a> ·
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeyCLuvzAj7tdj3EzK7p1M9_2r-CgDVAGgoKb7yS5XZ4CY8Hw/viewform" target="_blank" rel="noopener">Feedback</a> ·
+    <a href="https://chromewebstore.google.com/" target="_blank" rel="noopener">Chrome Web Store</a>
+    <p style="margin-top: 14px;">Built by Ilshat Nazargulov.</p>
+  </footer>
+
+</div>
+</body>
+</html>

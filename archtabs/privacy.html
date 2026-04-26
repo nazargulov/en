@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — ArchTabs</title>
+<meta name="description" content="ArchTabs privacy policy: no page contents collected, no tracking. Spaces, snapshots, and settings stay on your device.">
+<link rel="canonical" href="https://nazargulov.github.io/en/archtabs/privacy.html">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<style>
+  :root {
+    --bg: #f7f5f1;
+    --card: #ffffff;
+    --text: #1a1c20;
+    --muted: #6b7280;
+    --border: #e8e4dc;
+    --accent: #4f46e5;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.7;
+    color: var(--text);
+    background: var(--bg);
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 56px 24px 80px; }
+  header { text-align: center; margin-bottom: 40px; }
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .date { color: var(--muted); font-size: 0.9rem; }
+
+  .content {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px 36px;
+  }
+  h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 28px 0 12px;
+    letter-spacing: -0.01em;
+  }
+  h2:first-child { margin-top: 0; }
+  p, ul, table { margin-bottom: 14px; color: var(--text); font-size: 0.95rem; }
+  ul { padding-left: 22px; }
+  li { margin-bottom: 6px; color: var(--text); }
+  code { background: #f1f1ee; padding: 2px 6px; border-radius: 4px; font-size: 0.88em; font-family: ui-monospace, "SF Mono", monospace; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0 18px; font-size: 0.9rem; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { font-weight: 600; color: var(--muted); font-size: 0.85rem; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .back {
+    display: inline-block;
+    margin-top: 28px;
+    color: var(--accent);
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+  footer {
+    margin-top: 48px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  footer a { color: var(--muted); margin: 0 10px; }
+  footer a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Privacy Policy</h1>
+    <p class="date">Last updated: 26 April 2026</p>
+  </header>
+
+  <div class="content">
+
+    <p>ArchTabs is a Chrome extension that adds vertical tabs, Spaces, an archive, and a command bar to your browser. It is built to respect your privacy. Your browsing stays on your device.</p>
+
+    <h2>What we do NOT collect</h2>
+    <ul>
+      <li>We do <strong>not</strong> collect, transmit, store, or sell the contents of pages you visit.</li>
+      <li>We do <strong>not</strong> track which websites you open.</li>
+      <li>We do <strong>not</strong> ask for your name, email, or any account.</li>
+      <li>We do <strong>not</strong> read or transmit form fields, passwords, cookies, or local storage of any site.</li>
+      <li>We do <strong>not</strong> sell, rent, or share data with third parties.</li>
+      <li>We do <strong>not</strong> send website domains to an external favicon service.</li>
+    </ul>
+
+    <h2>What stays on your device</h2>
+    <p>ArchTabs stores the following in your browser's local storage (<code>chrome.storage.local</code>), only on the device where the extension is installed:</p>
+    <ul>
+      <li>Your Spaces (name, color, emoji) and the assignment of tabs and groups to Spaces.</li>
+      <li>Last-active timestamps per tab — used for the 14-day idle auto-archive feature. Stored as numeric IDs and timestamps only, never URLs or page contents.</li>
+      <li>Your "Favorites" quick-access shortcuts.</li>
+      <li>Collapse/expand state of tab groups.</li>
+    </ul>
+    <p>This data never leaves your device, except where you explicitly use Chrome's own browser sync (which ArchTabs does not control).</p>
+
+    <h2>Analytics</h2>
+    <p>ArchTabs sends anonymous, aggregated usage events to Google Analytics 4 via the Measurement Protocol. The events are limited to:</p>
+    <ul>
+      <li><code>extension_installed</code>, <code>extension_updated</code> — install lifecycle.</li>
+      <li><code>tool_used</code> with a <code>tool</code> parameter (e.g., <code>space_switch</code>, <code>group_create</code>, <code>archive_tab</code>, <code>command_bar</code>) — which feature was used.</li>
+    </ul>
+    <p>The events do <strong>not</strong> contain tab URLs, tab titles, page contents, your IP address as a stable identifier, or any personally identifiable information. A randomly generated client ID is stored in <code>chrome.storage.local</code> so we can count distinct installs without identifying you. You can clear it at any time by removing the extension's local storage.</p>
+
+    <h2>Optional AI mode</h2>
+    <p>ArchTabs's AI mode is optional. When you use it, the AI provider receives only the information required to complete your tab-management request:</p>
+    <ul>
+      <li>Tab titles and URLs from the current Chrome window.</li>
+      <li>Space names and tab group names.</li>
+      <li>Your typed AI instruction.</li>
+    </ul>
+    <p>ArchTabs never sends page contents, form fields, cookies, passwords, or site local storage to AI providers. If you choose BYOK mode, your API key is stored in <code>chrome.storage.local</code> on your device. It is used only to call the API endpoint you configure.</p>
+
+    <h2>Permissions and why we ask</h2>
+    <table>
+      <thead><tr><th>Permission</th><th>Reason</th></tr></thead>
+      <tbody>
+        <tr><td><code>tabs</code></td><td>Read open tab titles/URLs to render the sidebar.</td></tr>
+        <tr><td><code>tabGroups</code></td><td>Create/update Chrome tab groups so Spaces and the Archive group work.</td></tr>
+        <tr><td><code>sidePanel</code></td><td>Render ArchTabs in Chrome's side panel.</td></tr>
+        <tr><td><code>storage</code></td><td>Persist your Spaces, layout, and settings on your device.</td></tr>
+        <tr><td><code>alarms</code></td><td>Run the hourly idle-tab archive check in the background.</td></tr>
+      </tbody>
+    </table>
+    <p>Optional permissions are requested only when you explicitly enable the related command bar scope:</p>
+    <table>
+      <thead><tr><th>Optional permission</th><th>Reason</th></tr></thead>
+      <tbody>
+        <tr><td><code>bookmarks</code></td><td>Search bookmarks from the command bar.</td></tr>
+        <tr><td><code>history</code></td><td>Search browsing history from the command bar.</td></tr>
+        <tr><td><code>sessions</code></td><td>Restore recently closed tabs from the command bar.</td></tr>
+      </tbody>
+    </table>
+    <p>ArchTabs does not request <code>host_permissions</code> on any specific website. It does not inject scripts into web pages.</p>
+
+    <h2>Children's privacy</h2>
+    <p>ArchTabs is not directed at children under 13 and does not knowingly collect any data from them.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>If we change how ArchTabs handles data, we will update this page and the extension's listing in the Chrome Web Store before the change takes effect.</p>
+
+    <h2>Contact</h2>
+    <p>Questions or concerns: send a message via our <a href="https://docs.google.com/forms/d/e/1FAIpQLSeyCLuvzAj7tdj3EzK7p1M9_2r-CgDVAGgoKb7yS5XZ4CY8Hw/viewform" target="_blank" rel="noopener">feedback form</a> or email the developer via the Chrome Web Store listing page.</p>
+
+    <a class="back" href="index.html">← Back to ArchTabs</a>
+  </div>
+
+  <footer>
+    <a href="index.html">Home</a> ·
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeyCLuvzAj7tdj3EzK7p1M9_2r-CgDVAGgoKb7yS5XZ4CY8Hw/viewform" target="_blank" rel="noopener">Feedback</a>
+    <p style="margin-top: 14px;">Built by Ilshat Nazargulov.</p>
+  </footer>
+
+</div>
+</body>
+</html>
