@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Google Permission Required - EmailMassa</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav shell"><a class="brand" href="index.html"><span class="brand-mark">M</span>EmailMassa</a></nav>
+  </header>
+  <main class="page-main shell">
+    <section class="page-card">
+      <div class="eyebrow">Connection incomplete</div>
+      <h1>EmailMassa needs the requested Google permissions.</h1>
+      <p class="lead">The connection could not finish. Return to the extension and try again, making sure the requested permissions are accepted.</p>
+      <div id="errorDetails" class="status-box error">Google authorization did not complete.</div>
+      <ol class="steps-list">
+        <li>Open the EmailMassa popup in Chrome.</li>
+        <li>Click the Google connection button again.</li>
+        <li>Choose the Gmail account you intend to send from.</li>
+        <li>Accept the listed permissions.</li>
+      </ol>
+      <div class="hero-actions">
+        <a class="button" href="https://mail.google.com" target="_blank" rel="noopener">Open Gmail</a>
+        <a class="button secondary" href="permissions.html">Why these permissions?</a>
+      </div>
+    </section>
+  </main>
+  <script>
+    const error = new URLSearchParams(window.location.search).get('error');
+    if (error) document.getElementById('errorDetails').textContent = error;
+  </script>
+</body>
+</html>

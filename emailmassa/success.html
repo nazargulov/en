@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Payment Confirmed - EmailMassa</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav shell">
+      <a class="brand" href="index.html"><span class="brand-mark">M</span>EmailMassa</a>
+    </nav>
+  </header>
+  <main class="page-main shell">
+    <section class="page-card">
+      <div class="eyebrow">Payment confirmed</div>
+      <h1>Your Premium access is being activated.</h1>
+      <p class="lead">This was a one-time payment. There is no subscription or automatic renewal.</p>
+      <ol class="steps-list">
+        <li>Keep this page open while EmailMassa validates the Stripe payment.</li>
+        <li>Open Gmail and click the EmailMassa extension icon.</li>
+        <li>Your Premium status will also sync automatically from the connected email address.</li>
+      </ol>
+      <div id="activationStatus" class="status-box">Validating payment...</div>
+      <a class="button full" href="https://mail.google.com" target="_blank" rel="noopener">Open Gmail</a>
+    </section>
+  </main>
+  <script>
+    const BILLING_SERVER = 'https://emailmassa-billing.u9603656505.workers.dev';
+    const statusBox = document.getElementById('activationStatus');
+
+    function setStatus(message, type = '') {
+      statusBox.textContent = message;
+      statusBox.classList.remove('error', 'success');
+      if (type) statusBox.classList.add(type);
+    }
+
+    function delay(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    async function getLicense(sessionId) {
+      const response = await fetch(`${BILLING_SERVER}/api/license/by-session?session_id=${encodeURIComponent(sessionId)}`);
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(payload.error || `Validation failed (${response.status})`);
+      return payload;
+    }
+
+    async function activateExtension(extId, purchase) {
+      if (!extId || !window.chrome?.runtime?.sendMessage) {
+        setStatus('Payment confirmed. Open the EmailMassa popup to sync Premium.', 'success');
+        return;
+      }
+      await new Promise((resolve, reject) => {
+        chrome.runtime.sendMessage(extId, {
+          action: 'activateLicense',
+          email: purchase.email,
+          licenseKey: purchase.licenseKey,
+          purchase: {
+            amount: purchase.amount,
+            currency: purchase.currency,
+            plan: purchase.plan_label || 'premium'
+          }
+        }, (response) => {
+          if (chrome.runtime.lastError) {
+            reject(new Error(chrome.runtime.lastError.message));
+            return;
+          }
+          if (!response?.success) {
+            reject(new Error(response?.error || 'Extension activation failed'));
+            return;
+          }
+          resolve();
+        });
+      });
+      setStatus('Premium was activated in EmailMassa.', 'success');
+    }
+
+    async function initialize() {
+      const params = new URLSearchParams(window.location.search);
+      const sessionId = params.get('session_id');
+      const extId = params.get('ext_id');
+      if (!sessionId) {
+        setStatus('Payment completed. Open the EmailMassa popup to sync Premium.', 'success');
+        return;
+      }
+
+      for (let attempt = 1; attempt <= 6; attempt += 1) {
+        try {
+          const result = await getLicense(sessionId);
+          if (result.status === 'pending') {
+            setStatus('Waiting for Stripe to confirm the payment...');
+            await delay(4000);
+            continue;
+          }
+          if (result.status !== 'paid') throw new Error('Payment is not confirmed yet');
+          await activateExtension(extId, result);
+          return;
+        } catch (error) {
+          if (attempt === 6) {
+            setStatus(`Payment was received, but automatic activation did not finish. Open the extension popup to sync. (${error.message})`, 'error');
+            return;
+          }
+          await delay(3000);
+        }
+      }
+    }
+
+    initialize();
+  </script>
+</body>
+</html>
